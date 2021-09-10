@@ -220,3 +220,4 @@ fabric.properties
 # bdd firebase
 /android/app/src/google-services.json
 /ios/Runner/GoogleService-Info.plist
+/web/index.html
