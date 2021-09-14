@@ -1,9 +1,14 @@
-import 'package:betterflutterapp/screens/bottom_app_bar.dart';
-import 'package:betterflutterapp/screens/todo_list.dart';
+import 'package:betterflutterapp/screens/navigation.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 
-void main() {
+void main() async{
+
+  // faire inisialiser firebase simplement
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
   runApp(MyApp());
 }
 ///
@@ -20,18 +25,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       ///////////////HOME//////////
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: backgroundColor,
-        appBar: AppBar(
-          backgroundColor: backgroundColor,
-          title: Text('FlutterApp'),
-          elevation: 0,
-        ),
-        /////////BODY///////////
-      body: TodoList(),
-        ///////////BOTTOM APP BAR/////////////
-        bottomNavigationBar: MyBottomAppBar(),
-      ),
-    );
+      home: Navigation()//TodoList()
+      );
   }
 }
