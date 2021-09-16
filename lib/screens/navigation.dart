@@ -1,3 +1,4 @@
+import 'package:betterflutterapp/screens/splash_screen.dart';
 import 'package:betterflutterapp/models/user_model.dart';
 import 'package:betterflutterapp/screens/auth/auth_screen.dart';
 import 'package:betterflutterapp/screens/todo_list/todo_list_screen.dart';
@@ -22,17 +23,16 @@ class _NavigationState extends State<Navigation> {
 
 
 
-
     @override
     void initState(){
       super.initState();
 
+
       _widgets.addAll([
 
         AuthScreen(
-        onChangedStep: (index, email, password, name) =>
+        onChangedStep: (index, email, name, password) =>
           setState(() {
-
 
               _indexSelected = index;
               _email = email;
@@ -45,9 +45,10 @@ class _NavigationState extends State<Navigation> {
                   email: _email,
                   name: _name,
                   password: _password,
-              )).then((
-                 value) => print(value.toJson())
-             );
+              )).catchError((e){
+               print('erreur $e');
+              });
+             
 
           }),
         ),

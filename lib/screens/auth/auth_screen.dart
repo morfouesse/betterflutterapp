@@ -23,9 +23,7 @@ class _AuthScreenState extends State<AuthScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final RegExp emailRegex = RegExp(r"[a-z0-9\._-]+@[a-z0-9\._-]+\.[a-z]+");
 
-  //loading permet de rafraichir la vue quand c'est à true
-  // et de mettre un loader(logo) sur la vue
-  bool loading = false;
+
   bool _isSecret = true;
 
   String _email = "";
@@ -45,6 +43,8 @@ class _AuthScreenState extends State<AuthScreen> {
     final backgroundColor = Colors.indigo[900];
     final overlayColor = Colors.indigo[100];
     final textWhiteColor = Colors.white;
+
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: new Container(
@@ -135,7 +135,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   obscureText: _isSecret,
                   validator: (value) =>
-                  // minimum pour firebase 5 caracteres
+                  // minimum pour firebase 6 caracteres
                   value!.length < 6 ?
                   "Enter a password with at least 6 characteres" :
                   null,
@@ -156,12 +156,11 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                   // methode async pour celle lié au user donc on ajoute
                   // // async au bouton
-                  onPressed: ()  {
+                  onPressed: () async{
                     // on valide le formulaire
                     if(_formKey.currentState!.validate()){
-                      setState(() => loading = true);
                       // on va à la vue suivante
-                      widget.onChangedStep(1,
+                     await widget.onChangedStep(1,
                         _email,
                         _name,
                         _password,

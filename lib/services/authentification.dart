@@ -16,14 +16,15 @@ class Authentification{
       userCredential = await _auth.signInWithEmailAndPassword(
           email: userModel.email, password: userModel.password
       );
-
-
-
     } // pas de user alors on créer un user
     catch (e) {
+      
       userCredential = await _auth.createUserWithEmailAndPassword(
           email: userModel.email, password: userModel.password
-      );
+      ).catchError((e){
+        userModel.toJson();
+        print('erreur $e');
+      });
     }
     // l'id du user credential devient le meme que celui du user model
     userModel.setUid = userCredential.user!.uid;
