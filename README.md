@@ -1,16 +1,6 @@
 # betterflutterapp
 
-A new Flutter project.
+Une version amélioré et un peu différente de ma première app avec flutter avec
+pour but une authentification et un CRUDnavec des pense bêtes à nôtés pour
+l'utilisateur avec une gestion de son profil.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
