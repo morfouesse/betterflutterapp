@@ -1,4 +1,3 @@
-import 'package:betterflutterapp/screens/fragment/bottom_app_bar.dart';
 import 'package:flutter/material.dart';
 
 class TodoList extends StatefulWidget {
@@ -10,27 +9,20 @@ class TodoList extends StatefulWidget {
 
 class _TodoListState extends State<TodoList> {
   final backgroundColor = Colors.indigo[900];
-  final textWhiteColor = Colors.white;
+
   @override
   Widget build(BuildContext context) {
-    //base de l'appli scaffold
     return Scaffold(
-      ///////APP BAR///////////
-      appBar: AppBar(
-        backgroundColor: backgroundColor,
-        title: Text('FlutterApp'),
-        elevation: 0,
-      ),
-      ///////////////HOME//////////
       backgroundColor: backgroundColor,
-      body: Container(
-
-        child: Text('lorem',
-            style: TextStyle(color: textWhiteColor)
+        body: Center(
+            child: Text(
+                "home",
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20
+              ),
+            ),
         ),
-      ),
-      ///////////BOTTOM APP BAR/////////////
-      bottomNavigationBar: MyBottomAppBar(),
     );
   }
 }

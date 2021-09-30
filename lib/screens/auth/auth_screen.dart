@@ -5,10 +5,12 @@ import 'package:flutter/services.dart';
 class AuthScreen extends StatefulWidget {
   // auth_screen devra avoir une route (navigation)
   // avec un index pour les différentes pages
-  // et string pour savoir à quel email de user on à afaire
+  // et string pour savoir les differentes info du user
   final Function(int, String, String, String) onChangedStep;
 
-
+  // le onChangedStep sera lié à l'instance de AuthScreen
+  // donc il faudra renseigné les différente info d'une
+  // inscription pour aller sur AuthScreen
   AuthScreen({
     Key? key,
     required this.onChangedStep,
@@ -147,15 +149,11 @@ class _AuthScreenState extends State<AuthScreen> {
                     overlayColor: MaterialStateProperty.all<Color>(overlayColor!),
                   ),
                   child: Text( 'Se connecter',
-
                     style: TextStyle(
                       color: backgroundColor,
-
                     ),
-
                   ),
-                  // methode async pour celle lié au user donc on ajoute
-                  // // async au bouton
+
                   onPressed: () async{
                     // on valide le formulaire
                     if(_formKey.currentState!.validate()){

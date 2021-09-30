@@ -1,12 +1,23 @@
 class UserModel{
-  // on le met pas en final car
+  // je le met pas en final car
   // //l'uid sera implémenter un peu plus tard
-  String uid;
-  final String email;
-  final String name;
-  final String password;
+  // car je doit utiliser des fonctions avec des uid
+  // qui peuvent etre null
+  late String uid;
+  late String email;
+  late String name;
+  late String password;
 
-  UserModel(
+  UserModel(this.uid);
+
+  UserModel.withoutUid(
+      {required this.email,
+        required this.name,
+        required this.password
+      });
+
+
+  UserModel.full(
       this.uid,
       {required this.email,
         required this.name,
@@ -24,3 +35,5 @@ class UserModel{
     'name' : name
   };
 }
+
+

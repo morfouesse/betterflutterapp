@@ -35,3 +35,6 @@ const textInputDecoration = InputDecoration(
   ),
 );
 
+//exemple couleur hexa
+//const colorBackground2 = Color(0xFFF8084);
+

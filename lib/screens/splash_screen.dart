@@ -1,6 +1,10 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:betterflutterapp/screens/navigation.dart';
+import 'package:betterflutterapp/services/authentification.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'fragment/bottom_app_bar.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -11,10 +15,16 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
 
-
+  Authentification _auth = Authentification();
 
   @override
   Widget build(BuildContext context) {
+    // pour empecher l'orientation portrait
+    // ne fct peut etre pas sur iphone
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
       body: AnimatedSplashScreen(
         backgroundColor: Colors.indigo[900]!,
@@ -29,11 +39,38 @@ class _SplashScreenState extends State<SplashScreen> {
               ),
             ),
           ),
-        ), nextScreen:  Navigation(),
+          // streambuilder permet de gérer le build(etat: active,
+          // waiting par exemple) d'une vue
+          // par un stream
+        ), nextScreen:  StreamBuilder(
+        stream: _auth.user,
+        builder: (context, AsyncSnapshot snapshot){
+          // si on à fini de chargé la vue et qu'il y a un user courant
+          // alors on va sur la to do list sinon on crée son compte
+          if(snapshot.connectionState == ConnectionState.active){
+            // me permet de vérifié l'uid du user courant
+            if(snapshot.hasData){
+              return BottomNavBar();
+            }
+            return Navigation();
+          }
+          //TODO: faire un Loading
+          return Scaffold(
+            body: Center(
+                child: Text('Loading'),
+            ),
+          );
+
+        }
+      ),
+
+      // Navigation(),
         splashTransition: SplashTransition.slideTransition,
         animationDuration: Duration(milliseconds: 1500),
       ),
     );
   }
+
+
 }
 

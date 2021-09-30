@@ -1,9 +1,9 @@
-import 'package:betterflutterapp/screens/splash_screen.dart';
 import 'package:betterflutterapp/models/user_model.dart';
 import 'package:betterflutterapp/screens/auth/auth_screen.dart';
-import 'package:betterflutterapp/screens/todo_list/todo_list_screen.dart';
 import 'package:betterflutterapp/services/authentification.dart';
 import 'package:flutter/material.dart';
+
+import 'fragment/bottom_app_bar.dart';
 
 class Navigation extends StatefulWidget {
   const Navigation({Key? key}) : super(key: key);
@@ -12,6 +12,8 @@ class Navigation extends StatefulWidget {
   _NavigationState createState() => _NavigationState();
 }
 
+// je me suis dit que j'allais faire une classe qui gère
+// la navigation, je trouve ça plus visible
 class _NavigationState extends State<Navigation> {
     Authentification _auth = Authentification();
 
@@ -39,9 +41,8 @@ class _NavigationState extends State<Navigation> {
               _password = password;
               _name = name;
 
-              // premier parametre le uid
-              // à ce moment là on en à pas besoin
-             _auth.auth(UserModel("",
+
+             _auth.auth(UserModel.withoutUid(
                   email: _email,
                   name: _name,
                   password: _password,
@@ -52,7 +53,7 @@ class _NavigationState extends State<Navigation> {
 
           }),
         ),
-        TodoList(),
+        BottomNavBar(),
 
       ]);
     }
