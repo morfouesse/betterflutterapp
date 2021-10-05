@@ -1,4 +1,4 @@
-import 'package:betterflutterapp/screens/profil/profil.dart';
+import 'package:betterflutterapp/screens/profil/profil_screen.dart';
 import 'package:betterflutterapp/screens/todo_list/todo_list_screen.dart';
 import 'package:flutter/material.dart';
 
