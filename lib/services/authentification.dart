@@ -7,9 +7,10 @@ class Authentification {
   //  user courant
   Stream<UserModel> get user {
     return _auth.authStateChanges().asyncMap((user) =>
-        //TODO: il faudra gérer le cas d'un user à supprimer
         UserModel(user!.uid));
   }
+
+  //TODO: il faudra gérer le cas d'un user à supprimer
 
   Future<UserModel> auth(UserModel userModel) async {
     UserCredential userCredential;

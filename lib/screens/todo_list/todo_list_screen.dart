@@ -16,7 +16,7 @@ class _TodoListState extends State<TodoList> {
       backgroundColor: backgroundColor,
         body: Center(
             child: Text(
-                "home",
+                "Les idées",
               style: TextStyle(
                   color: Colors.white,
                   fontSize: 20

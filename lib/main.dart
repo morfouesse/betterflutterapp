@@ -1,6 +1,8 @@
 import 'package:betterflutterapp/screens/splash_screen.dart';
+import 'package:betterflutterapp/services/internet_connexion/connectivity_change_notifier.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
 void main() async{
@@ -22,10 +24,22 @@ class MyApp extends StatelessWidget {
   final backgroundColor = Colors.indigo[900];
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      ///////////////HOME//////////
+    // on observe les differents etats de la connexion internet
+    // sur l'appli avec la dépendance Provider
+    return ChangeNotifierProvider(
+        create: (context) {
+          // on met en place une verif sur la connexion internet
+          // et sur les données mobile
+          ConnectivityChangeNotifier changeNotifier =
+          ConnectivityChangeNotifier();
+          changeNotifier.initialLoad();
+          return changeNotifier;
+        },
+    child: MaterialApp(
+    ///////////////HOME//////////
       debugShowCheckedModeBanner: false,
       home: SplashScreen()//TodoList()
-      );
+      ),
+    );
   }
 }

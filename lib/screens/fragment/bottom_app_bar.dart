@@ -12,7 +12,7 @@ class BottomNavBar extends StatefulWidget {
 class _BottomNavBarState extends State<BottomNavBar> {
   final backgroundColor = Colors.indigo[900];
 
-  // pour les BottomNavigationBarItem/////
+  // index pour les BottomNavigationBarItem/////
   int _selectedIndex = 0;
 
 
